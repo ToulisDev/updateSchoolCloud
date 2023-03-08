@@ -1,0 +1,8 @@
+# Visual Studio and VS Code user specific files
+.vs/
+.vscode/
+.ignore
+.vsconfig
+*.code-workspace
+*.sln
+*.pyproject
