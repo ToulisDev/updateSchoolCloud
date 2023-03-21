@@ -69,15 +69,16 @@ with requests.Session() as s:
                     '_eventId':ID}
         print("Trying to Connect...")
         response = s.post(url, data=payload, headers = login_headers)
-        searchText = 'alert alert-danger'
-        strContentOfRe = response.text
-        
-        if searchText in strContentOfRe:
+        statusCode = response.status_code
+        if statusCode == 200:
+            print('Login successful!\n')
+            findAllSubjects()
+        elif statusCode == 401:
             print('Check your credentials and try again!\n')
             login()
         else:
-            print('Login successful!\n')
-            findAllSubjects()
+            print('An unexpected status code returned! Status Code: '+statusCode)
+        
 
 
 
